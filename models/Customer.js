@@ -25,7 +25,11 @@ const CustomerSchema = new mongoose.Schema({
     mobile: {
         type: Number,
         required: [true, 'Mobile is required'],
-    }
+    },
+    role : {
+        type:String,
+        default:'user'
+    },
 })
 
 CustomerSchema.pre('save', async function (next) {
