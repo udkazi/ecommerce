@@ -8,8 +8,12 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
 connectDB();
 
-const customoresRoutes = require('./routes/customoresRoutes')
+const customoresRoutes = require('./routes/customoresRoutes');
+const { notFound, errorHandler } = require('./middlewares/errorHandler');
 app.use('/', customoresRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
